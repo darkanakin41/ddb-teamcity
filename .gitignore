@@ -1,0 +1,13 @@
+/agents
+/buildagent/
+/data_dir
+/buildserver_pgdata
+/teamcity-server-logs
+/.idea
+
+###> inetum-orleans/docker-devbox ###
+/*ddb.local.*
+/.bash_enter
+/.bash_leave
+/docker-compose.yml
+###< inetum-orleans/docker-devbox ###

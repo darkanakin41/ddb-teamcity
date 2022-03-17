@@ -1,0 +1,3 @@
+docker:
+  user:
+    gid: 1001
