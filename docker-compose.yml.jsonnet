@@ -19,8 +19,7 @@ ddb.Compose() {
                 restart: "unless-stopped"
             },
         "teamcity-server": ddb.Image("jetbrains/teamcity-server:2021.2.3")
-            + ddb.VirtualHost("8111", domain, "app")
-            + ddb.VirtualHost("8111", "teamcity.darkanakin41.duckdns.org", "app-public")
+            + ddb.VirtualHost("8111", domain, "app", certresolver="letsencrypt", redirect_to_https=true)
             + ddb.User()
             + {
                 environment: {
@@ -48,7 +47,6 @@ ddb.Compose() {
                     "/opt/buildagent/temp:/opt/buildagent/temp",
                     "/opt/buildagent/system:/opt/buildagent/system",
                     "/var/run/docker.sock:/var/run/docker.sock",
-                    "/usr/bin/docker:/usr/bin/docker",
                 ],
                 restart: "unless-stopped",
                 networks: ['default'],
@@ -68,7 +66,6 @@ ddb.Compose() {
                     "/opt/buildagent/temp:/opt/buildagent/temp",
                     "/opt/buildagent/system:/opt/buildagent/system",
                     "/var/run/docker.sock:/var/run/docker.sock",
-                    "/usr/bin/docker:/usr/bin/docker",
                 ],
                 restart: "unless-stopped",
                 networks: ['default'],
